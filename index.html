@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <title>Calendário</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="menu">
+            <ul>
+                <li><a class="active">Calendário</a></li>
+                <li><a href="clock.html">Relógio</a></li>
+                <li><a href="weather.html">Clima</a></li>
+                <li><a href="calculator.html">Calculadora</a></li>
+            </ul>
+        </nav>
+        <div class="title">
+            <img src="https://img.icons8.com/ios-glyphs/50/ffffff/chevron-left.png" class="prev"/>
+            <h1 id="year"></h1>
+            <img src="https://img.icons8.com/ios-glyphs/50/ffffff/chevron-right.png" class="next"/>
+        </div>
+        <div class="calendar">
+            <div class="month">
+                <div class="monthname" style="background-color:#1094e5;">
+                    <h1>Janeiro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes0">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#03b9f2;">
+                    <h1>Fevereiro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes1">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#2dc2b6;">
+                    <h1>Março</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes2">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#2fc685;">
+                    <h1>Abril</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes3">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#6fc42d;">
+                    <h1>Maio</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes4">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#ffb81b;">
+                    <h1>Junho</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes5">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#f47722;">
+                    <h1>Julho</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes6">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#f14723;">
+                    <h1>Agosto</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes7">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#e12760;">
+                    <h1>Setembro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes8">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#cd2288;">
+                    <h1>Outubro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes9">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#972ff1;">
+                    <h1>Novembro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes10">
+                </div>
+            </div>
+            <div class="month">
+                <div class="monthname" style="background-color:#1e62dd;">
+                    <h1>Dezembro</h1>
+                </div>
+                <div class="week">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sext</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" title="mes11">
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+        <script type="text/javascript">
+            VanillaTilt.init(document.querySelectorAll(".month"), {
+                max: 0,
+                speed: 0,
+                scale:1.02,
+            });
+        </script>
+        <script src="js/script.js"></script> 
+    </body>
+</html>

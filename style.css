@@ -1,0 +1,527 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #181818;
+    color:white;
+    margin-top:10px;
+    height: 100%;
+}
+img{
+    cursor: pointer;
+}
+.title{
+    margin-top: 5rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title h1{
+    font-size:3.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+.calendar{
+    display:grid;
+    margin-left: 0.5rem;
+    grid-template-columns:16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
+    grid-row-gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+.month{
+    width: 19rem;
+    height: 18rem;
+    background-color: #222222;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.4);
+    transition: 0.25s;  
+}
+.month:hover{
+    cursor: pointer;
+}
+.monthname{
+    width: 100%;
+    height: 3rem;
+    background-color: #1687a7;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5); 
+}
+.monthname h1{
+    font-size:1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5);
+}
+.week{
+    width: 19rem;
+    height:2rem;
+    margin-top: 5px;
+    padding: 0 0.4rem;
+    display:flex;
+    align-items: center;
+}
+.week div{
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(44.2rem/7);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.5rem);
+}
+.days{
+    width: 100%;
+    display:flex;
+    flex-wrap:wrap;
+}
+.days div{
+font-size:0.9rem;
+width: calc(19rem/7);
+height: 2rem;
+display:flex;
+justify-content: center;
+align-items: center;
+text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.5rem);
+transition: 0.25s;
+}
+
+.days div:hover:not(.hoje){
+border:.2rem solid #777;
+cursor:pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.4;
+}
+
+#ex1 button, a{
+    width: 8rem;
+    border:0;
+    display:block;
+    background:none;
+    margin-right: 5%;
+    text-align: center;
+    transition: 0.25s;
+    cursor:pointer;
+    }
+
+.bottom{
+    overflow: auto;
+    position: fixed;
+    bottom:0;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+.next-page{
+    width: 7rem;
+    height:3rem;
+    border:0;
+    display:block;
+    background:none;
+    border:2px solid 	white;
+    padding:5px 15px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    outline: none;
+    color:white;
+    transition: 0.25s;
+    cursor:pointer;
+    opacity:100%;
+    text-decoration: none;
+    border-radius: 24px;
+}
+.next-page:hover{
+    width: 10rem;
+    background-color: white;
+    color:black;
+}
+main{
+    display:grid;
+    place-items:center;
+}
+.clock{
+    background: #222222 url(imgs/clock.png);
+    background-size: cover;
+    height: 30rem;
+    width: 30rem;
+    margin-top: 5%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:20px solid #404040;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2),
+                      0 20px 20px rgba(0,0,0,0.2)
+    ;
+}
+.clock::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: grey;
+    border:0.2rem solid #222222;
+    z-index:100000;
+    border-radius: 50%;
+}
+.clock-type{
+      position: fixed;
+      bottom: 4%;
+      width: 100%;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+}
+.clock-type button{
+    cursor: pointer;
+    padding: 1rem 1rem;
+    color:#e5e5e5;
+    text-align: center;
+    text-decoration: none;
+    font-size:0.7rem;
+    padding: 1rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;      
+    border:0.1rem solid #181818;
+}
+.clock-type button:focus{
+    outline: none;
+    border: none;
+}
+.hour,.min,.sec{
+    position: absolute;
+}
+.hr,.mn,.sc{
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+}
+.hr::before{
+    content: '';
+    position: absolute;
+    width: 0.6rem;
+    height: 5rem;
+    background-color: grey;
+    z-index: 10;
+    border-radius: 2px;
+}
+.mn::before{
+    content: '';
+    position: absolute;
+    width: 0.3rem;
+    height: 8rem;
+    background-color: white;
+    z-index: 11;
+    border-radius: 2px;
+}
+.sec::before{
+    content: '';
+    position: absolute;
+    width: 0.1rem;
+    height: 9rem;
+    background-color: #bd2000;
+    z-index: 12;
+    border-radius: 2px;
+}
+.menu{
+    top:0;
+    width: 100%;
+    background-color: #222222;   
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    box-shadow: 0 0 10px black;
+}
+ul {
+    list-style-type: none;
+    top:0;
+    width: 100%;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size:0.7rem;
+    padding: 1rem 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+    width: 9rem;
+  }
+  
+  .active {
+    background-color: #1094e5;
+  }
+  .type{
+      margin-top: 5rem;
+      display:flex;
+      justify-content: space-around;
+  }
+  .type button{
+      cursor: pointer;
+      background-color: #404040;
+      padding: 1rem 1rem;
+      color:#e5e5e5;
+      text-align: center;
+      text-decoration: none;
+      font-size:0.7rem;
+      padding: 1rem 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;      
+      border:0.1rem solid #181818;
+  }
+  .type button:hover{
+    border:0.1rem solid #404040;
+  }
+  .type button:focus{
+    outline: none;
+  }
+.digitalclock{
+    margin-top: 5%;
+    display:none;
+}
+.time{
+    background-color: #222222;
+    width: 20rem;
+    height: 20rem;
+    text-align: center;
+    justify-content: center;
+    font-size:7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.4);
+    transition: 0.25s;  
+    margin-left: 2rem;
+}
+.time span{
+    margin-top: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+.time p{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    font-size: 1.7rem;
+}
+.time input{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    outline: none;
+    border:0;
+    background-color: #333333;
+    color:#909090;
+    box-shadow: inset 0 0.2rem 1rem rgba(0,0,0,0.2);
+}
+.time input:focus{
+    color:white;
+}
+#tempbtn{
+    display:none;
+}
+#cronbtn{
+    display:none;
+}
+.time input::-webkit-inner-spin-button {
+    opacity: 0.5;
+  }
+.divsearch{
+width: 100%;
+align-items: center;
+margin-top: 5rem;
+display:flex;
+justify-content: center;
+  }
+.search{
+background-color: #ccc;
+width: 30%;
+padding: 12px 20px;
+height: 3rem;
+display: inline-block;
+border: 1px solid #ccc;
+outline: none;
+box-sizing: border-box;
+  }
+.divsearch button{
+    cursor: pointer;
+    background-color: #1094e5;
+    padding: 1rem 1rem;
+    height: 3rem;
+    color:#e5e5e5;
+    text-align: center;
+    text-decoration: none;
+    font-size:0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;      
+    border:0;
+  }
+  .divsearch button:focus{
+    outline: none;
+  }
+.weather{
+    background-color: #222222;
+    margin-top: 4rem;
+    width: 45rem;
+    height: 0;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.4);
+    transition: 0.5s;  
+}
+.weather p{
+    transition: 1s;
+}
+.header{
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.9rem;  
+    height: 20%;
+    background-color: #1094e5; 
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.4);
+    transition: 0.5s; 
+}
+.mid{
+    color:white;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;  
+}
+.login{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #222222;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.4);
+    transition: 0.5s; 
+    color:white;
+    width: 30rem;
+    height: 30rem;
+    margin-top:10%;
+}
+.login h1{
+    margin-top: 10%;
+    font-size: 2.3rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 50;
+    margin-bottom: 10%;
+}
+.login input[type="text"],.login input[type="password"]{
+    background:none;
+    font-size: 1rem;
+    width: 50%;
+    height: 10%;
+    margin-bottom: 2rem;
+    border:2px solid #1094e5;
+    outline: none;
+    color:white;
+    transition: 0.25s;
+    padding:14px 10px;
+    text-align: center; 
+}
+.login input[type="text"]:focus,.login input[type="password"]:focus{
+    width: 60%;
+}
+
+.login input[type="checkbox"]{
+cursor: pointer;
+width: 20px;
+height: 20px;
+}
+.login div label{
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    opacity: 80%;
+}
+.login button{
+    background:none;
+    font-size: 1rem;
+    margin-top: 2rem;
+    width: 30%;
+    height: 10%;
+    border:2px solid #1094e5;
+    outline: none;
+    color:white;
+    transition: 0.25s;
+    padding:14px 10px;
+    text-align: center; 
+    cursor: pointer;
+}
+.login button:hover{
+    background-color: #1094e5;
+}
+.login a{
+    margin-top: 0.9rem;
+    width: 100%;
+    color:white;
+    opacity: 50%;
+}
+.login a:hover{
+    opacity: 100%;
+}
+.calculator{
+    display:grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 16% 16% 16% 16% 16%;
+    margin-top: 1%;
+    width: 20%;
+}
+.calculator button{
+    background-color: #404040;
+    border: 1px solid #222222;
+    height: 5rem;
+    color:white;
+    cursor: pointer;
+}
+.calculator button:hover{
+    background-color: #909090;
+}
+.calculator button:focus{
+    border:1px solid #222222;
+    outline: none;
+}
+.calculator button:active{
+    background-color: #909090;
+    transition: 0.25s;
+}
+.divsearch label{
+    width: 20%;
+    background-color: #404040;
+    justify-content: center;
+    text-align: end;
+    padding-right: 1rem;
+    align-items: center;
+    font-size: 4rem;
+    height: 5rem;
+}

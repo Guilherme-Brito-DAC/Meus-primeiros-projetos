@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <title>Clima</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Calendário</a></li>
+                <li><a href="clock.html">Relógio</a></li>
+                <li><a class="active">Clima</a></li>
+                <li><a href="calculator.html">Calculadora</a></li>
+            </ul>
+        </nav>
+        <main><div class="divsearch">
+            <input class="search" id="searchinput" placeholder="Ex: São Paulo" autofocus><button id="search"><img src="https://img.icons8.com/android/12/ffffff/search.png"/>   Pesquisar</button>
+        </div>
+        <div class="weather" id="weather">
+            <div class="header" id="head"><p id="cityname"></p>
+                <p style="font-size: 0.9rem;margin-top: 0.6rem;letter-spacing: 0.2rem;text-transform:capitalize ;" id="dateday"></p>
+            </div>
+            <div class="mid">
+                <span style="display:flex;"><img id="imgmid" src="" /><p id="status" style="padding-top:3rem;"></p></span>
+                <p id="temperatura" style="font-size: 5rem;"></p>
+                <br>
+                <p id="tempmin"></p>
+                <br>
+                <p id="humity"></p>
+                <br>
+                <p id="pressure"></p>
+                <br>
+                <p id="windspeed"></p>
+                <br>
+                <p id="trem"></p>
+            </div>
+        </div>
+</main>
+        <script>
+            const search = document.getElementById("search");
+            const inputsearch = document.getElementById("searchinput");
+            const temperatura = document.getElementById("temperatura");
+            const cityname = document.getElementById("cityname");
+            const dateday = document.getElementById("dateday");
+            const temperature = document.getElementById("temperatura");
+            const pressure = document.getElementById("pressure");
+            const humity = document.getElementById("humity");
+            const windspeed = document.getElementById("windspeed");
+            const tempmin = document.getElementById("tempmin");
+            const imgmid = document.getElementById("imgmid");
+            const trem = document.getElementById("trem");
+            const status = document.getElementById("status");
+            const weatherdiv = document.getElementById("weather");
+            const head = document.getElementById("head");
+
+            dia = [
+                    "Domingo",
+                    "Segunda-Feira",
+                    "Terça-Feira",
+                    "Quarta-Feira",
+                    "Quinta-Feira",
+                    "Sexta-Feira",
+                    "Sábado",
+                ]
+            const imgs = {
+               Rain:"https://img.icons8.com/color/120/000000/rain--v1.png",
+               Snow:"https://img.icons8.com/color/120/000000/snow--v1.png",
+               Clouds:"https://img.icons8.com/color/120/000000/cloud.png",
+               Clear:"https://img.icons8.com/color/120/000000/sun--v1.png",
+            }
+        
+            const api = {
+                key:"f65bf6d937563539bd08066a38bc8af9",
+                base:"https://api.openweathermap.org/data/2.5/",
+                lang:"pt_br",
+                units:"metric"
+            }
+
+            search.addEventListener("click",() =>{
+               result(inputsearch.value)                
+            });
+
+            inputsearch.addEventListener("keypress",enter)
+
+            function enter(event){
+                key = event.keyCode
+                if(key === 13){
+                    result(inputsearch.value) 
+                }
+            }
+
+            function result(city){
+                fetch(`${api.base}weather?q=${city}&lang=${api.lang}&units=${api.units}&APPID=${api.key}`)
+                .then(response =>{
+                    if(!response.ok){
+                        throw new Error(`http error:status ${response.status}`)
+                    }
+                    return response.json();
+                })
+                .catch(error =>{
+                    alert(error.message);
+                })
+                .then(response =>{
+                    displayResults(response);
+                })
+            }
+            function displayResults(weather){
+                console.log(weather)
+                cityname.innerText= `${weather.name},${weather.sys.country}`;
+
+                let date = new Date();
+                dateday.innerText= `${dia[date.getDay()]},${date.getDate()}`
+
+                temperature.innerText = `${Math.round(weather.main.temp)}°C`
+                tempmin.innerText = `Min: ${weather.main.temp_min}°C  |   Max: ${weather.main.temp_max}°C`
+                humity.innerText = `Humidade: ${weather.main.humidity}%`
+                pressure.innerText = `Pressão: ${weather.main.pressure}hpa`
+                windspeed.innerText = `Velocidade do Vento: ${weather.wind.speed}km/h`
+                console.log(weather.weather[0].main)
+                imgmid.src = imgs[weather.weather[0].main]
+                status.innerText = weather.weather[0].main;
+                weatherdiv.style.height="40rem";
+                head.style.padding ="2.3rem";
+            }
+
+
+        </script>
+        <script src="js/script.js"></script> 
+    </body>
+</html>

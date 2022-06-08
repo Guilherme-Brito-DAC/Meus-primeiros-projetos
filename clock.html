@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clock</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Calendário</a></li>
+                <li><a class="active">Relógio</a></li>
+                <li><a href="weather.html">Clima</a></li>
+                <li><a href="calculator.html">Calculadora</a></li>
+            </ul>
+        </nav>
+                <main>
+                    <div class="type">
+                        <button style="background-color:#1094e5" id="relogio">Relógio</button>
+                        <button id="cron">Cronômetro</button>
+                        <button id="temp">Temporizador</button>
+                    </div>
+                    <div class="clock" id="clock">
+                        <div class="hour">
+                            <div class="hr" id="hr"></div>
+                        </div>
+                        <div class="min">
+                            <div class="mn" id="mn"></div>
+                        </div>
+                        <div class="sec">
+                            <div class="sc" id="sc"></div>
+                        </div>
+                    </div>
+                    <div class="digitalclock" id="digitalclock">
+                        <div class="time"><p style="background-color: #1094e5;">DATA</p><p id="day">00</p><p id="month">00</p><p id="year">00</p></div>
+                        <div class="time"><p style="background-color: #2fc685;">Horas</p><span id="hr1">00</span></div>
+                        <div class="time"><p style="background-color: #f14723;">Minutos</p><span id="min">00</span></div>
+                        <div class="time"><p style="background-color: #e12760;">Segundos</p><span id="sec1">00</span></div>
+                    </div>
+                    <div class="clock-type" id="typeclock">
+                        <button id="analogic" style="background-color:#1094e5">Analógico</button>
+                        <button id="digital" style="background-color:#404040">Digital</button>
+                    </div>
+                    <div class="digitalclock" id="temp1">
+                        <div class="time"><p style="background-color: #1094e5;">Horas</p><input id="hrtemp"  value="00" type="number" min="00" max="99" ><span id="hr2" style="display:none">00</span></div>
+                        <div class="time"><p style="background-color: #2fc685;">Minutos</p><input id="mintemp" value="00" type="number" min="00" max="99" ><span id="min2" style="display:none">00</span></div>
+                        <div class="time"><p style="background-color: #f14723;">Segundos</p><input id="sectemp" value="00" type="number" min="00" max="99" ><span id="sec2" style="display:none">00</span></div>
+                    </div>
+                    <div class="clock-type" id="tempbtn">
+                        <button id="starttemp" style="background-color:#404040"><img src="https://img.icons8.com/android/12/ffffff/play.png"/>  Iniciar</button>
+                        <button id="stoptemp" style="background-color:#404040"><img src="https://img.icons8.com/android/12/ffffff/stop.png"/>   Parar</button>
+                    </div>
+                    <div class="digitalclock" id="cron1">
+                        <div class="time"><p style="background-color: #1094e5;">Horas</p><span id="hrcron">00</span></div>
+                        <div class="time"><p style="background-color: #2fc685;">Minutos</p><span id="mincron">00</span></div>
+                        <div class="time"><p style="background-color: #f14723;">Segundos</p><span id="seccron">00</span></div>
+                    </div>
+                    <div class="clock-type" id="cronbtn">
+                        <button id="startcron" style="background-color:#404040"><img src="https://img.icons8.com/android/12/ffffff/play.png"/>   Iniciar</button>
+                        <button id="stopcron" style="background-color:#404040"><img src="https://img.icons8.com/android/12/ffffff/stop.png"/>  Parar</button>
+                        <button id="recron" style="background-color:#404040"><img src="https://img.icons8.com/metro/12/ffffff/restart.png"/> Reiniciar</button>
+                    </div>
+                </main>
+
+
+        <script type="text/javascript">
+            const deg = 6;
+            const hr = document.querySelector("#hr");
+            const mn = document.querySelector("#mn");
+            const sec = document.querySelector(".sec");
+            const hr1 = document.querySelector("#hr1");
+            const min = document.querySelector("#min");
+            const sec1 = document.querySelector("#sec1");
+            const day = document.querySelector("#day");
+            const month = document.querySelector("#month");
+            const year = document.querySelector("#year");
+
+            setInterval(() => {
+                let date = new Date();
+
+                let hh = date.getHours() * 30 ;
+                let mm = date.getMinutes() * deg;
+                let ss = date.getSeconds() * deg;
+                let d = date.getDay();
+                let m = date.getMonth();
+                let y = date.getFullYear();
+                dia = [
+                    "Domingo",
+                    "Segunda-Feira",
+                    "Terça-Feira",
+                    "Quarta-Feira",
+                    "Quinta-Feira",
+                    "Sexta-Feira",
+                    "Sábado",
+                ]
+                mes = [
+                    "Janeiro",
+                    "Fevereiro",
+                    "Março",
+                    "Abril",
+                    "Maio",
+                    "Junho",
+                    "Julho",
+                    "Agosto",
+                    "Setembro",
+                    "Outubro",
+                    "Novembro",
+                    "Dezembro",
+                ]
+                hr.style.transform = `rotateZ(${hh+(mm/12) + 180}deg)`;
+                mn.style.transform = `rotateZ(${mm + 180}deg)`;
+                sec.style.transform = `rotateZ(${ss + 180}deg)`;
+                if((mm/6)<10)
+                    min.innerHTML = "0"+mm/6;
+                else
+                    min.innerHTML = mm/6;
+                if((ss/6)<10)
+                    sec1.innerHTML = "0"+ss/6;
+                else
+                    sec1.innerHTML = ss/6;
+                if((hh/30) <10)
+                hr1.innerHTML = "0"+hh/30;
+                else
+                hr1.innerHTML = hh/30;
+
+                day.innerHTML = dia[d]+"("+d+")";
+                month.innerHTML = mes[m];
+                year.innerHTML = y;
+                
+            })
+        </script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+        <script type="text/javascript">
+            VanillaTilt.init(document.querySelectorAll(".time"), {
+                max: 0,
+                speed: 0,
+                scale:1.02,
+            });
+        </script>
+    </body>
+</html>
